@@ -17,16 +17,20 @@ const displayMobs = (mobs) => {
    
     for(let i = 0; i < Object.keys(mobs.All_Mobs).length; i++){
  
-     var li = document.createElement('li'); 
+        var li = document.createElement('li'); 
  
     var h2 = document.createElement('h2'); 
     h2.innerHTML = ""+mobs.All_Mobs[i].name; 
+
+    var h3 = document.createElement('h3'); 
+    h3.innerHTML = ""+mobs.All_Mobs[i].type; 
  
     var img = document.createElement('img'); 
     img.setAttribute('src', mobs.All_Mobs[i].img);
 
     li.setAttribute('class', 'character');
     li.appendChild(h2);
+    li.appendChild(h3);
     li.appendChild(img);
     mob.appendChild(li);}
 };
