@@ -1,12 +1,12 @@
-const mob = document.getElementById('mob')
+const mob = document.getElementById('mob');
 let minecraftMobs = [];
 
 const cargarMobs = async () => { 
     try {
         const res = await fetch('https://minecraft-api-utch.herokuapp.com/api_minecraft/mobs/'); 
         minecraftMobs = await res.json(); 
-        console.log(minecraftMobs.mobs)
-        displayCharacters(minecraftMobs); 
+        console.log(minecraftMobs.All_Mobs)
+        displayMobs(minecraftMobs); 
         
     } catch (err) {
         console.error(err); 
@@ -15,24 +15,20 @@ const cargarMobs = async () => {
 
 const displayMobs = (mobs) => { 
    
-    for(let i = 0; i < Object.keys(mobs.mobs).length; i++){
+    for(let i = 0; i < Object.keys(mobs.All_Mobs).length; i++){
  
      var li = document.createElement('li'); 
  
-    var p = document.createElement('p'); 
-    p.innerHTML = ""+mobs.mobs[i].education;
- 
     var h2 = document.createElement('h2'); 
-    h2.innerHTML = ""+mobs.mobs[i].name;
+    h2.innerHTML = ""+mobs.All_Mobs[i].name; 
  
     var img = document.createElement('img'); 
-    img.setAttribute('src', mobs.mobs[i].img);
+    img.setAttribute('src', mobs.All_Mobs[i].img);
 
     li.setAttribute('class', 'character');
     li.appendChild(h2);
-    li.appendChild(p);
     li.appendChild(img);
-    charactersList.appendChild(li);}
+    mob.appendChild(li);}
 };
  
 cargarMobs(); 
